@@ -47,7 +47,7 @@
 }
 
 .btnCard {
-    height: 100vh;
+    height: 88%;
     overflow-y: scroll;
     scrollbar-color: white;
 }

@@ -11,7 +11,7 @@ const LeftPart = ({groupList, handleModelOpen}) => {
                     {groupList.map((item, index) => (
                         <div key={index} className={styles.pocketContainer}>
                             <div className={styles.itemShortTitle} style={{backgroundColor: item.selectedColorValue}}>{(item.groupName.split(' ')[0][0]+item.groupName.split(' ')[1][0]).toUpperCase()}</div>
-                            <h4 className={styles.itemTitle}>{item.groupName}</h4>
+                            <h4 className={styles.itemTitle}>{item.groupName.charAt(0).toUpperCase() + item.groupName.slice(1)}</h4>
                         </div>
                     ))}
                 </div>
