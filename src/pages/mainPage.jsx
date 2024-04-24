@@ -4,84 +4,6 @@ import styles from './mainPage.module.css';
 import RightPart from '../component/rightPart/rightPart';
 import Model from '../component/model/model';
 
-const groupList = [
-    {   
-        id:1,
-        shortTitleIcon: 'MN',
-        title: 'My Notes'
-    },
-    {   
-        id:2,
-        shortTitleIcon: 'MP',
-        title: 'My personal grp'
-    },
-    {   
-        id:3,
-        shortTitleIcon: 'JG',
-        title: 'Javascript grp'
-    },
-    {   
-        id:1,
-        shortTitleIcon: 'MN',
-        title: 'My Notes'
-    },
-    {   
-        id:2,
-        shortTitleIcon: 'MP',
-        title: 'My personal grp'
-    },
-    {   
-        id:3,
-        shortTitleIcon: 'JG',
-        title: 'Javascript grp'
-    },
-    {   
-        id:1,
-        shortTitleIcon: 'MN',
-        title: 'My Notes'
-    },
-    {   
-        id:2,
-        shortTitleIcon: 'MP',
-        title: 'My personal grp'
-    },
-    {   
-        id:3,
-        shortTitleIcon: 'JG',
-        title: 'Javascript grp'
-    },
-    {   
-        id:1,
-        shortTitleIcon: 'MN',
-        title: 'My Notes'
-    },
-    {   
-        id:2,
-        shortTitleIcon: 'MP',
-        title: 'My personal grp'
-    },
-    {   
-        id:3,
-        shortTitleIcon: 'JG',
-        title: 'Javascript grp'
-    },
-    {   
-        id:1,
-        shortTitleIcon: 'MN',
-        title: 'My Notes'
-    },
-    {   
-        id:2,
-        shortTitleIcon: 'MP',
-        title: 'My personal grp'
-    },
-    {   
-        id:3,
-        shortTitleIcon: 'JG',
-        title: 'Javascript grp'
-    },
-];
-
 const MainPage = () => {
     const [modalOpenCloseFlag, setModalOpenCloseFlag] = useState(false);
     const colorCode = ['#B38BFA', '#FF79F2', '#43E6FC', '#F19576', '#0047FF', '#6691FF'];
@@ -89,7 +11,15 @@ const MainPage = () => {
     const [groupListValue, setGroupListValue] = useState([]);
     
     useEffect(()=>{
+        const groupItems = JSON.parse(localStorage.getItem('data'));
+        if (groupItems) {
+            setGroupListValue(groupItems);
+        }
+    },[])
+
+    useEffect(()=>{
         localStorage.setItem('data', JSON.stringify(groupListValue));
+        setGroupValue({groupName:'', selectedColorValue: ''})
     },[groupListValue])
 
     const handleModelOpen =() =>{
@@ -111,13 +41,13 @@ const MainPage = () => {
 
     const handleSubmitCreateGroup = (event) => {
         event.preventDefault();
-        setGroupListValue((prev)=>[...prev,groupValue]);
+        setGroupListValue((prev)=>[...prev,groupValue]);        
     }
 
     return (
         <>
             <div className={styles.mainPages}>
-                <div className={styles.leftPart}><LeftPart groupList = {groupList} handleModelOpen={handleModelOpen}/></div>
+                <div className={styles.leftPart}><LeftPart groupList = {groupListValue} handleModelOpen={handleModelOpen}/></div>
                 <div className={styles.rightPart}><RightPart /></div>
             </div>
             {modalOpenCloseFlag &&

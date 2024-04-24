@@ -10,8 +10,8 @@ const LeftPart = ({groupList, handleModelOpen}) => {
                 <div className={styles.notesCard}>
                     {groupList.map((item, index) => (
                         <div key={index} className={styles.pocketContainer}>
-                            <div className={styles.itemShortTitle}>{(item.title.split(' ')[0][0]+item.title.split(' ')[1][0]).toUpperCase()}</div>
-                            <h4 className={styles.itemTitle}>{item.title}</h4>
+                            <div className={styles.itemShortTitle} style={{backgroundColor: item.selectedColorValue}}>{(item.groupName.split(' ')[0][0]+item.groupName.split(' ')[1][0]).toUpperCase()}</div>
+                            <h4 className={styles.itemTitle}>{item.groupName}</h4>
                         </div>
                     ))}
                 </div>
