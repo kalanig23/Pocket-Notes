@@ -1,4 +1,13 @@
 .leftPart {
-    border: 1px solid black;
-    width: 25%;
+    width: 30%;
+    position: relative;
+}
+
+.rightPart {
+    width: 70%;
+    background: #DAE5F5;
+}
+
+.mainPages {
+    display: flex;
 }

@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './groupBtn.module.css';
 import plusIcon from '../../assets/plus.svg';
 
-const GroupButton = () => {
+const GroupButton = ({handleModelOpens}) => {
     return (
         <>
-            <button className={styles.groupBtn}>
+            <button className={styles.groupBtn} onClick={handleModelOpens}>
                 <img src={plusIcon}/>
             </button>
         </>
