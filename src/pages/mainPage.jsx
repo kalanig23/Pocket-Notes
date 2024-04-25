@@ -3,13 +3,16 @@ import LeftPart from '../component/LeftPart/leftPart';
 import styles from './mainPage.module.css';
 import RightPart from '../component/rightPart/rightPart';
 import Model from '../component/model/model';
+import { v4 as uuidv4 } from 'uuid';
 
 const MainPage = () => {
     const [modalOpenCloseFlag, setModalOpenCloseFlag] = useState(false);
     const colorCode = ['#B38BFA', '#FF79F2', '#43E6FC', '#F19576', '#0047FF', '#6691FF'];
-    const [groupValue, setGroupValue] = useState({groupName:'', selectedColorValue: ''});
+    const [groupValue, setGroupValue] = useState({id: '', groupName:'', selectedColorValue: ''});
     const [groupListValue, setGroupListValue] = useState([]);
-    
+    const [selectedGroupValue, setSelectedGroupValue] = useState({});
+    const [selectedItemid, setselectedItemid] = useState();
+
     useEffect(()=>{
         const groupItems = JSON.parse(localStorage.getItem('data'));
         if (groupItems) {
@@ -21,7 +24,7 @@ const MainPage = () => {
         localStorage.setItem('data', JSON.stringify(groupListValue));
         setGroupValue({groupName:'', selectedColorValue: ''})
     },[groupListValue])
-
+    
     const handleModelOpen =() =>{
         setModalOpenCloseFlag(true);
     }
@@ -38,17 +41,35 @@ const MainPage = () => {
         e.preventDefault();
         setGroupValue({...groupValue, selectedColorValue: e.target.value});
     }
-
+  
     const handleSubmitCreateGroup = (event) => {
         event.preventDefault();
-        setGroupListValue((prev)=>[...prev,groupValue]);        
+        let uniqueId = uuidv4();
+        setGroupListValue((prev)=>[...prev,{...groupValue, id:uniqueId}]);        
+    }
+
+    const showNotesClick = (itemId) => {
+        let selectedGroup = groupListValue.filter((groupListValueItem)=> groupListValueItem.id===itemId);
+        setSelectedGroupValue(selectedGroup['0']);
+        setselectedItemid(itemId);
     }
 
     return (
         <>
             <div className={styles.mainPages}>
-                <div className={styles.leftPart}><LeftPart groupList = {groupListValue} handleModelOpen={handleModelOpen}/></div>
-                <div className={styles.rightPart}><RightPart /></div>
+                <div className={styles.leftPart}>
+                    <LeftPart
+                        groupList = {groupListValue}
+                        handleModelOpen={handleModelOpen}
+                        showNotesClick={showNotesClick}
+                        selectedItemid={selectedItemid}
+                    />
+                </div>
+                <div className={styles.rightPart}>
+                    <RightPart
+                        selectedGroupValue={selectedGroupValue}
+                    />
+                </div>
             </div>
             {modalOpenCloseFlag &&
                 <Model

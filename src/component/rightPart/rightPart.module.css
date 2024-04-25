@@ -4,3 +4,75 @@
     align-items: center;
     margin: auto;
 }
+
+.headerContainer {
+    display: flex;
+    background-color: #3f3fb3;
+    padding: 15px;
+}
+
+.noteMessageContainer {
+    overflow-y: scroll;
+    height: 50%;
+}
+
+.noteMessage {
+    background: #FFFFFF;
+    padding: 30px 15px 50px 15px;
+    margin: 10px 40px 40px;
+    border-radius: 5px ;
+}
+
+.headerShortTitle {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    align-content: space-evenly;
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 23.45px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+}
+
+.headerTitle {
+    align-content: space-evenly;
+    font-family: 'Roboto';
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28.13px;
+    letter-spacing: 0.02em;
+    color: white;
+    margin-left: 20px;
+}
+
+.notetextAreaMessageContainer {
+    background: #001F8B;
+}
+
+.notetextAreaMessageContainer > textarea {
+    border-radius: 9px 0px 0px 0px;
+    height: 160px;
+    width: 850px;
+    margin: 15px 15px;
+    padding: 15px 0 15px 15px;
+    font-family: 'Roboto';
+    font-size: 29.82px;
+    font-weight: 400;
+    line-height: 34.94px;
+    letter-spacing: 0.02em;
+    color: #9A9A9A;
+}
+
+.messageDateTime {
+    float: right;
+    margin-top: 20px;
+    color: #353535;
+}
+
+.messageDateTime > span:nth-child(2)::before {
+    content:" • ";
+    margin-left: 15px;
+}
