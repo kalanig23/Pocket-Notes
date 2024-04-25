@@ -12,6 +12,7 @@ const MainPage = () => {
     const [groupListValue, setGroupListValue] = useState([]);
     const [selectedGroupValue, setSelectedGroupValue] = useState({});
     const [selectedItemid, setselectedItemid] = useState();
+    const [noteMessage, setNoteMessage] = useState('');
 
     useEffect(()=>{
         const groupItems = JSON.parse(localStorage.getItem('data'));
@@ -54,6 +55,14 @@ const MainPage = () => {
         setselectedItemid(itemId);
     }
 
+    const handleChangeNoteText = (e) => {
+        setNoteMessage(e.target.value);
+    }
+
+    const submitNoteMessage = (noteMessage) => {
+        setNoteMessage('');
+    }
+
     return (
         <>
             <div className={styles.mainPages}>
@@ -68,6 +77,10 @@ const MainPage = () => {
                 <div className={styles.rightPart}>
                     <RightPart
                         selectedGroupValue={selectedGroupValue}
+                        handleChangeNoteText={handleChangeNoteText}
+                        noteMessage={noteMessage}
+                        submitNoteMessage={submitNoteMessage}
+                        selectedItemid={selectedItemid}
                     />
                 </div>
             </div>

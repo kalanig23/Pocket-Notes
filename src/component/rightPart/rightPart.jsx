@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import RightFrontNote from '../../assets/frontnote.svg';
 import styles from './rightPart.module.css';
+import arraowLeft from '../../assets/arrowsubmit.svg';
 
 const note = [{
     message:'Another productive way to use this tool to begin a daily writing routine. One way is to generate a random paragraph with the intention to try to rewrite it while still keeping the original meaning. The purpose here is to just get the writing started so that when the writer goes onto their days writing projects, words are already flowing from their fingers.',
@@ -12,7 +13,7 @@ const note = [{
     time:'10:10 AM'
 }]
 
-const RightPart = ({selectedGroupValue}) => {
+const RightPart = ({selectedGroupValue, handleChangeNoteText, noteMessage, submitNoteMessage, selectedItemid}) => {
     const [groupListValue, setGroupListValue] = useState([]);
 
     useEffect(()=>{
@@ -111,7 +112,9 @@ const RightPart = ({selectedGroupValue}) => {
                     </div>
                 </div>
                 <div className={styles.notetextAreaMessageContainer}>
-                    <textarea type='text'></textarea>
+                    <textarea className={styles.noteMessageTextArea} type='text' onChange={(e)=>handleChangeNoteText(e)} value={noteMessage}>
+                    </textarea>
+                    <img src={arraowLeft} alt='submitBtn' className={styles.submitArrow} onClick={()=>submitNoteMessage(noteMessage)}/>
                 </div>
             </>
         }

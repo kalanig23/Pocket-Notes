@@ -76,3 +76,14 @@
     content:" • ";
     margin-left: 15px;
 }
+
+.noteMessageTextArea {
+    position: relative;
+}
+
+.submitArrow {
+    position: absolute;
+    bottom: 60px;
+    left: 1225px;
+    cursor: pointer;
+}
