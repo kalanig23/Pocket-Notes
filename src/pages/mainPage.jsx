@@ -10,10 +10,7 @@ const MainPage = () => {
     const colorCode = ['#B38BFA', '#FF79F2', '#43E6FC', '#F19576', '#0047FF', '#6691FF'];
     const [groupValue, setGroupValue] = useState({id: '', groupName:'', selectedColorValue: ''});
     const [groupListValue, setGroupListValue] = useState([]);
-    const [selectedGroupValue, setSelectedGroupValue] = useState({});
     const [selectedItemid, setselectedItemid] = useState();
-    const [noteMessage, setNoteMessage] = useState('');
-
     useEffect(()=>{
         const groupItems = JSON.parse(localStorage.getItem('data'));
         if (groupItems) {
@@ -46,21 +43,11 @@ const MainPage = () => {
     const handleSubmitCreateGroup = (event) => {
         event.preventDefault();
         let uniqueId = uuidv4();
-        setGroupListValue((prev)=>[...prev,{...groupValue, id:uniqueId}]);        
+        setGroupListValue((prev)=>[...prev,{...groupValue, id:uniqueId}]);
     }
 
     const showNotesClick = (itemId) => {
-        let selectedGroup = groupListValue.filter((groupListValueItem)=> groupListValueItem.id===itemId);
-        setSelectedGroupValue(selectedGroup['0']);
         setselectedItemid(itemId);
-    }
-
-    const handleChangeNoteText = (e) => {
-        setNoteMessage(e.target.value);
-    }
-
-    const submitNoteMessage = (noteMessage) => {
-        setNoteMessage('');
     }
 
     return (
@@ -76,11 +63,8 @@ const MainPage = () => {
                 </div>
                 <div className={styles.rightPart}>
                     <RightPart
-                        selectedGroupValue={selectedGroupValue}
-                        handleChangeNoteText={handleChangeNoteText}
-                        noteMessage={noteMessage}
-                        submitNoteMessage={submitNoteMessage}
                         selectedItemid={selectedItemid}
+                        groupListValueProps={groupListValue}
                     />
                 </div>
             </div>
