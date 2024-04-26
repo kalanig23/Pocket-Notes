@@ -24,6 +24,7 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
     const submitNoteMessage = () => {
         let object = {message: noteMessage, date: dateFormate(), time:timeFormat()}
         setNoteList([...noteList, object]);
+        setNoteMessage('')
     }
 
     function dateFormate () {
