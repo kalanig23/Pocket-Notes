@@ -20,11 +20,18 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
         }
     },[groupListValueProps, selectedItemid])
     
+    useEffect(()=> {
+        console.log('noteList:',noteList)
+    },[noteList])
     
     const submitNoteMessage = () => {
-        let object = {message: noteMessage, date: dateFormate(), time:timeFormat()}
-        setNoteList([...noteList, object]);
-        setNoteMessage('')
+        if (noteMessage.length) {
+            let object = {message: noteMessage, date: dateFormate(), time:timeFormat()}
+            setNoteList([...noteList, object]);
+            setNoteMessage('')
+        } else {
+            alert('message is empty!!');
+        }
     }
 
     function dateFormate () {

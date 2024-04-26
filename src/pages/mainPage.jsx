@@ -43,7 +43,11 @@ const MainPage = () => {
     const handleSubmitCreateGroup = (event) => {
         event.preventDefault();
         let uniqueId = uuidv4();
-        setGroupListValue((prev)=>[...prev,{...groupValue, id:uniqueId}]);
+        if (groupValue.groupName.length && groupValue.selectedColorValue.length) {
+            setGroupListValue((prev)=>[...prev,{...groupValue, id:uniqueId}]);
+        } else {
+            alert('all filed required!!');
+        }
     }
 
     const showNotesClick = (itemId) => {
