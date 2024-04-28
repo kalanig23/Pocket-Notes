@@ -13,26 +13,32 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
     useEffect(()=>{
         if(selectedItemid === ids) {
             setGroupListValue(groupListValueProps);
-            setIds(selectedItemid);
+            setIds(groupListValueProps[0]?.id);
         } else {
             setGroupListValue(groupListValueProps.filter((groupListValueItem)=> groupListValueItem.id===selectedItemid));
             setIds(selectedItemid)
         }
     },[groupListValueProps, selectedItemid])
     
-    useEffect(()=> {
-        console.log('noteList:',noteList)
-    },[noteList])
-    
     const submitNoteMessage = () => {
         if (noteMessage.length) {
-            let object = {message: noteMessage, date: dateFormate(), time:timeFormat()}
-            setNoteList([...noteList, object]);
+            let object = {message: noteMessage, date: dateFormate(), time:timeFormat(), groupId: ids}
+            setNoteList((noteList)=>[...noteList, object]);
             setNoteMessage('')
         } else {
             alert('message is empty!!');
         }
     }
+
+    useEffect(() => {
+        if (noteList !== null && noteList !== undefined) {
+            try {
+                localStorage.setItem('noteList', JSON.stringify(noteList));
+            } catch (error) {
+                console.error('Error storing noteList in localStorage:', error);
+            }
+        }
+    }, [noteList]);
 
     function dateFormate () {
         var currentDate = new Date();
@@ -55,19 +61,16 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
             <>
                 <div className={styles.headerContainer}>
                     <div className={styles.headerShortTitle}
-                        style={{backgroundColor: groupListValue[0]['selectedColorValue'] && groupListValue[0]['selectedColorValue']}}>
+                        style={{backgroundColor: groupListValue[0]?.['selectedColorValue'] && groupListValue[0]?.['selectedColorValue']}}>
                         {
-                            groupListValue[0]['groupName'] && 
-                            (groupListValue[0]['groupName'].split(' ')[0][0]
-                            +groupListValue[0]['groupName'].split(' ')[1][0])
-                            .toUpperCase()
+                            groupListValue[0]?.['groupName'] && (groupListValue[0]?.['groupName'].split(' ')[0][0]+groupListValue[0]?.['groupName'].split(' ')[1][0]).toUpperCase()
                         }
                     </div>
                     <h4 className={styles.headerTitle}>
-                        {groupListValue[0]['groupName']}
+                        {groupListValue[0]?.['groupName'].charAt(0).toUpperCase() + groupListValue[0]?.['groupName'].slice(1)}
                     </h4>
                 </div>
-                <Note/>
+                <Note noteList />
                 <div 
                     className={styles.notetextAreaMessageContainer}>
                     <textarea
@@ -89,7 +92,8 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
             <div className={styles.rightEmptyNote}>
                 <img src={RightFrontNote}/>
                 <h1>Pocket Notes</h1>
-                <p>Send and receive messages without keeping your phone online.Use Pocket Notes on up to 4 linked devices and 1 mobile phone</p>
+                <span>Send and receive messages without keeping your phone online.</span>
+                <span>Use Pocket Notes on up to 4 linked devices and 1 mobile phone</span>
             </div>
         }
         </>

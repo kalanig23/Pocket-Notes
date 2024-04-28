@@ -13,7 +13,7 @@ const LeftPart = ({groupList, handleModelOpen, showNotesClick, selectedItemid}) 
                             key={item.id}
                             className={styles.pocketContainer}
                             onClick={()=>showNotesClick(item.id)}
-                            style={{backgroundColor : selectedItemid==item.id ? '#2F2F2F': 'white'}}
+                            style={{backgroundColor : selectedItemid==item.id ? '#2f2f2f2f': 'white'}}
                         >
                             <div className={styles.itemShortTitle} style={{backgroundColor: item.selectedColorValue}}>{(item.groupName.split(' ')[0][0]+item.groupName.split(' ')[1][0]).toUpperCase()}</div>
                             <h4 className={styles.itemTitle}>{item.groupName.charAt(0).toUpperCase() + item.groupName.slice(1)}</h4>

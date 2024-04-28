@@ -6,9 +6,9 @@ const Model = ({handleModelClose,colorCode, groupValue, handleGroupNameChange, h
         <div id="myModal" className={styles.modal}>
         <div className={styles.modalContent}>
             <span className={styles.close} onClick={handleModelClose}>&times;</span>
-            <p>Create New group</p>
+            <p className={styles.modalTitle}>Create New group</p>
             <form>
-                <div>
+                <div className={styles.groupNameLabel}>
                     <label>Group Name</label>
                     <input
                         type='text'
@@ -16,14 +16,15 @@ const Model = ({handleModelClose,colorCode, groupValue, handleGroupNameChange, h
                         value={groupValue.groupName}
                         placeholder='Enter group name'
                         onChange={(e)=>{handleGroupNameChange(e)}}
+                        className={styles.inputGroupName}
                     />
                 </div>
-                <div>
-                    <label>Choose colour</label>
+                <div style={{marginTop: '25px'}}>
+                    <label className={styles.colorCodeLabel}>Choose colour</label>
                     {colorCode.map((colorCodeValue, index)=>(
                         <button
                             key={index}
-                            style={{backgroundColor: colorCodeValue, border: colorCodeValue, color: colorCodeValue}}
+                            style={{backgroundColor: colorCodeValue, border: colorCodeValue, color: colorCodeValue, outline: colorCodeValue}}
                             className={styles.groupColor}
                             value={colorCodeValue}
                             name='choose_colour'
@@ -31,7 +32,7 @@ const Model = ({handleModelClose,colorCode, groupValue, handleGroupNameChange, h
                         ></button>
                     ))}
                 </div>
-                <button className={styles.createGroupBtn} onClick={(event)=>handleSubmitCreateGroup(event)}>Create</button>
+                <button className={styles.createGroupBtn} onClick={(event)=>handleSubmitCreateGroup(event)} style={{marginTop: '25px'}}>Create</button>
             </form>
         </div>
         </div>

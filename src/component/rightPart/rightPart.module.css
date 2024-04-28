@@ -3,8 +3,26 @@
     flex-direction: column;
     align-items: center;
     margin: auto;
+    margin-top: 100px;
 }
 
+.rightEmptyNote > h1 {
+    font-family: 'Roboto';
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 58.59px;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+}
+
+.rightEmptyNote > span {
+    font-family: 'Roboto';
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0.02em;
+}
+ 
 .headerContainer {
     display: flex;
     background-color: #3f3fb3;
@@ -13,7 +31,7 @@
 
 .noteMessageContainer {
     overflow-y: scroll;
-    height: 50%;
+    height: 62.5%;
 }
 
 .noteMessage {
@@ -21,6 +39,11 @@
     padding: 30px 15px 50px 15px;
     margin: 10px 40px 40px;
     border-radius: 5px ;
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28.83px;
+    letter-spacing: 0.035em;
 }
 
 .headerShortTitle {
@@ -54,7 +77,7 @@
 
 .notetextAreaMessageContainer > textarea {
     border-radius: 9px 0px 0px 0px;
-    height: 160px;
+    height: 100px;
     width: 850px;
     margin: 15px 15px;
     padding: 15px 0 15px 15px;
@@ -70,6 +93,14 @@
     float: right;
     margin-top: 20px;
     color: #353535;
+}
+
+.messageDateTime > span {
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 17.58px;
+    letter-spacing: 0.02em;
 }
 
 .messageDateTime > span:nth-child(2)::before {

@@ -17,8 +17,17 @@
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    height: 150px;
-    width: 500px;
+    width: 740px;
+    height: 317px;
+    border-radius: 6px;
+  }
+
+  .modalTitle {
+    font-family: 'Roboto';
+    font-size: 29px;
+    font-weight: 500;
+    line-height: 46.45px;
+    letter-spacing: 0.035em;
   }
 
   form {
@@ -40,18 +49,51 @@
     cursor: pointer;
   }
 
+  .groupNameLabel {
+    font-family: 'Roboto';
+    font-size: 27.31px;
+    font-weight: 500;
+    line-height: 43.75px;
+    letter-spacing: 0.035em;
+  }
+
+  .inputGroupName {
+    width: 435px;
+    height: 51px;
+    border-radius: 22px;
+    opacity: 0px;
+    border: 2px solid #979797;
+    font-family: 'Roboto';
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 36.84px;
+    letter-spacing: 0.035em;
+    color: #979797;
+    outline: #979797;
+    padding-left: 25px;
+    margin-left: 50px;
+  }
+
+  .colorCodeLabel {
+    font-family: 'Roboto';
+    font-size: 27.31px;
+    font-weight: 500;
+    line-height: 43.75px;
+    letter-spacing: 0.035em;
+  }
+
   .groupColor {
-    height: 20px;
-    width: 20px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     margin-left: 10px;
     cursor: pointer;
-    outline: none;
     caret-color: transparent;
+    margin-left: 25px;
+
   }
 
   .createGroupBtn {
-    width: 154px;
     height: 38px;
     border-radius: 11px;
     border: #001F8B;
@@ -63,4 +105,5 @@
     line-height: 32.04px;
     letter-spacing: 0.035em;
     color: white;
+    margin-left: 600px;
   }

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../rightPart/rightPart.module.css';
 
 const Note = () => {
+    useEffect(() => {
+        const noteListData = localStorage.getItem('noteList');
+      },);
+
     return(
         <div className={styles.noteMessageContainer}>
                     <div className={styles.noteMessage}>
