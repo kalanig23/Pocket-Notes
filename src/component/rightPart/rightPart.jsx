@@ -32,7 +32,7 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
     }
 
     useEffect(() => {
-        if (noteList !== null && noteList !== undefined) {
+        if (noteList.length !== 0 && noteList !== undefined) {
             try {
                 localStorage.setItem('noteList', JSON.stringify(noteList));
             } catch (error) {
@@ -71,7 +71,7 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
                         {groupListValue[0]?.['groupName'].charAt(0).toUpperCase() + groupListValue[0]?.['groupName'].slice(1)}
                     </h4>
                 </div>
-                <Note noteList />
+                <Note selectedItemid={ids} />
                 <div 
                     className={styles.notetextAreaMessageContainer}>
                     <textarea
@@ -81,12 +81,13 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
                         value={noteMessage}
                     >
                     </textarea>
-                    <img
-                        src={arraowLeft} 
-                        alt='submitBtn' 
-                        className={styles.submitArrow} 
-                        onClick={submitNoteMessage}
-                    />
+                    <div className={styles.submitArrow} >
+                        <img
+                            src={arraowLeft} 
+                            alt='submitBtn' 
+                            onClick={submitNoteMessage}
+                        />
+                    </div>
                 </div>
             </>
             :

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from '../rightPart/rightPart.module.css';
 
-const Note = () => {
+const Note = ({selectedItemid}) => {
     useEffect(() => {
         const noteListData = localStorage.getItem('noteList');
       },);

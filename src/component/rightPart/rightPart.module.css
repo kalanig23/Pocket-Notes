@@ -73,13 +73,16 @@
 
 .notetextAreaMessageContainer {
     background: #001F8B;
+    display: flex;
 }
 
 .notetextAreaMessageContainer > textarea {
     border-radius: 9px 0px 0px 0px;
     height: 100px;
     width: 850px;
-    margin: 15px 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
     padding: 15px 0 15px 15px;
     font-family: 'Roboto';
     font-size: 29.82px;
@@ -87,6 +90,7 @@
     line-height: 34.94px;
     letter-spacing: 0.02em;
     color: #9A9A9A;
+    border-color: white;
 }
 
 .messageDateTime {
@@ -110,11 +114,19 @@
 
 .noteMessageTextArea {
     position: relative;
+    outline: white;
+    border: white;
 }
 
 .submitArrow {
-    position: absolute;
-    bottom: 60px;
-    left: 1225px;
+    margin-top: 15px;
+    background: white;
+    height: 130px;
+    margin-right: 15px;
+}
+
+.submitArrow > img {
     cursor: pointer;
+    padding-top: 89px;
+    padding-right: 15px;
 }
