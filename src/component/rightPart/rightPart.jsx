@@ -3,6 +3,7 @@ import RightFrontNote from '../../assets/frontnote.svg';
 import styles from './rightPart.module.css';
 import arraowLeft from '../../assets/arrowsubmit.svg';
 import Note from '../note/note';
+import lock from '../../assets/lock.svg';
 
 const RightPart = ({ groupListValueProps, selectedItemid}) => {
     const [groupListValue, setGroupListValue] = useState([]);
@@ -94,6 +95,7 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
                 <h1>Pocket Notes</h1>
                 <span>Send and receive messages without keeping your phone online.</span>
                 <span>Use Pocket Notes on up to 4 linked devices and 1 mobile phone</span>
+                <div style={{bottom: '0', display: 'flex', position: 'absolute', marginBottom: '25px'}}><img src={lock} alt='lock'/><span style={{verticalAlign: 'top', marginLeft:'10px', marginTop: '3px' }}>end-to-end encrypted</span></div>
             </div>
         }
         </>
