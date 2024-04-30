@@ -10,7 +10,11 @@ const Note = ({selectedItemid}) => {
         setNoteStateListData(filterNoteStateListData);
     },[]);
 
-
+    useEffect(()=>{
+        const filterNoteStateListData = noteListData.filter((data)=>data.groupId == selectedItemid)
+        setNoteStateListData(filterNoteStateListData);
+    },[selectedItemid])
+    
     return(
         <div className={styles.noteMessageContainer}>
             {noteStateListData?.map((noteData, index)=>(
