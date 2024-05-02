@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import RightFrontNote from '../../assets/frontnote.svg';
 import styles from './rightPart.module.css';
 import arraowLeft from '../../assets/arrowsubmit.svg';
 import Note from '../note/note';
 import lock from '../../assets/lock.svg';
+import {NoteListContext} from '../../App';
 
 const RightPart = ({ groupListValueProps, selectedItemid}) => {
+    const {noteLists, setNoteLists} = useContext(NoteListContext);
+    console.log('data', noteLists);
     const [groupListValue, setGroupListValue] = useState([]);
     const [ids, setIds] = useState();
     const [noteMessage, setNoteMessage] = useState('');
-    const [noteList, setNoteList] = useState([]);
+
+     useEffect(()=>{
+        const value = JSON.parse(localStorage.getItem('noteLists'));
+        if (value?.length) {
+            setNoteLists([...value]);
+        }
+    },[])
 
     useEffect(()=>{
         if(selectedItemid === ids) {
@@ -24,7 +33,7 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
     const submitNoteMessage = () => {
         if (noteMessage.length) {
             let object = {message: noteMessage, date: dateFormate(), time:timeFormat(), groupId: ids}
-            setNoteList((noteList)=>[...noteList, object]);
+            setNoteLists((noteLists)=>[...noteLists, object]);
             setNoteMessage('')
         } else {
             alert('message is empty!!');
@@ -32,14 +41,14 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
     }
 
     useEffect(() => {
-        if (noteList.length !== 0 && noteList !== undefined) {
+        if (noteLists.length !== 0 && noteLists !== undefined) {
             try {
-                localStorage.setItem('noteList', JSON.stringify(noteList));
+                localStorage.setItem('noteLists', JSON.stringify(noteLists));
             } catch (error) {
-                console.error('Error storing noteList in localStorage:', error);
+                console.error('Error storing noteLists in localStorage:', error);
             }
         }
-    }, [noteList]);
+    }, [noteLists]);
 
     function dateFormate () {
         var currentDate = new Date();
