@@ -14,9 +14,11 @@ const RightPart = ({ groupListValueProps, selectedItemid}) => {
     const [noteMessage, setNoteMessage] = useState('');
     // const [noteList, setNoteList] = useState([]);
 
-    useEffect(()=>{
-        const value = JSON.parse(localStorage.getItem('noteList'));
-        setNoteLists([...value]);
+     useEffect(()=>{
+        const value = JSON.parse(localStorage.getItem('noteLists'));
+        if (value?.length) {
+            setNoteLists([...value]);
+        }
     },[])
 
     useEffect(()=>{
