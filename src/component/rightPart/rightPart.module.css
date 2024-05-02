@@ -79,7 +79,7 @@
 .notetextAreaMessageContainer > textarea {
     border-radius: 9px 0px 0px 0px;
     height: 100px;
-    width: 850px;
+    width: 100vw;
     margin-top: 15px;
     margin-left: 15px;
     margin-bottom: 15px;
